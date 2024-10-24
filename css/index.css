@@ -27,6 +27,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(5px); 
 }
 
 .slider-container {
@@ -72,18 +73,24 @@ body {
   color: white;
   overflow: hidden; 
   transform: translateX(-100%); 
-  animation: textIn 1s forwards; 
+  animation: slideIn 3s ease-in-out forwards;;
 }
-
 
 .text span,
 .text h1 {
   margin-top: 20px;
   opacity: 0; 
   transition: opacity 3s ease; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Bóng đổ cho văn bản */
 }
-
-
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
 @keyframes slideIn {
   0% {
     transform: translateX(-100%); 
@@ -93,7 +100,6 @@ body {
   }
 }
 
-
 @keyframes textIn {
   0% {
     transform: translateX(-100%); 
@@ -102,3 +108,41 @@ body {
     transform: translateX(0); 
   }
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    height: auto; /* Hoặc một chiều cụ thể */
+  }
+  .slide-img, .text {
+    width: 100%; /* Điều chỉnh kích thước cho thiết bị di động */
+  }
+}
+
+
+/* Đặt các vị trí cho hình ảnh */
+.slide-1 .slide-img img {
+  transform: translateX(0); /* Ảnh giữ nguyên vị trí */
+}
+
+.slide-2 .slide-img img {
+  transform: translateX(20%); /* Dịch sang phải */
+}
+
+.slide-3 .slide-img img {
+  transform: translateX(-20%); /* Dịch sang trái */
+}
+
+.slide-4 .slide-img img {
+  transform: translateY(20%); /* Dịch xuống */
+}
+
+.slide-5 .slide-img img {
+  transform: translateY(-20%); /* Dịch lên */
+}
+
+.slide-6 .slide-img img {
+  transform: scale(1.2); /* Zoom ra một chút */
+}
+
